@@ -132,15 +132,6 @@ style=numeric,
     \end{notation}
     \pause
     Kurz: Unsere Welt ist eine Euklidische.
-
-%     \pause
-%     \begin{definition}
-%         Seien $u, v \in \R^n$ Vektoren. Wir nennen
-%         $$
-%             H^+(u, v) \coloneqq \{ w \in \R^n \mid d(u,w) \leq d(v, w) \}
-%         $$
-%         den \emph{Halbraum} von $u$ und $v$.
-%     \end{definition}
 \end{frame}
 
 \begin{frame}
@@ -179,19 +170,85 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    TODO: Bieberbach
-\end{frame}
-
-\begin{frame}
-    \begin{alertblock}{test}
-        gfddsg
-    \end{alertblock}
+    In 1900 hat Hilbert 23 Probleme bei einem Kongress vorgestellt, die zu diesem Zeitpunkt ungelöst waren.
+    \begin{block}{18. Hilbert Problem}
+        Gibt es für festes $n$ endlich viele kristallographische Gruppen?
+    \end{block}
+    \pause
+    \begin{exampleblock}{Bieberbachsche Sätze (1910)}
+        Ja, für festes $n \in \N$ gibt es nur endlich viele kristallographische Gruppen. \\
+        Für $n=2$ gibt es $17$, für $n=3$ gibt es $230$.
+    \end{exampleblock}
+    Für bis niedrige Dimensionen sind alle dieser Gruppen bekannt, z.B. für $n\leq 4$ hier: \cite{crystGrpsDimFour}.
 \end{frame}
 
 \section{Dirichletzellen}
+\begin{frame}
+    \begin{alertblock}{Problem}
+        Gegeben eine kristallographische Gruppe $\Gamma \leq E(n)$. Was ist ein Fundamentalbereich?
+    \end{alertblock}
+    \pause
+    \begin{exampleblock}{Antwort}
+        Dirichletzellen
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \begin{definition}
+        Seien $u, v \in \R^n$ Vektoren. Wir nennen
+        $$
+            H^+(u, v) \coloneqq \{ w \in \R^n \mid d(u,w) \leq d(v, w) \}
+        $$
+        den \emph{Halbraum} von $u$ und $v$.
+    \end{definition}
+    \pause
+    \begin{definition}
+        Sei $O \subseteq \R^n$ eine diskrete Menge und $u \in O$ ein Punkt.
+        Dann nennen wir 
+        $$
+		    D(u, O) \coloneqq \{ v \in \R^n \mid \forall w \in O \setminus \{ u \} : d(u, v) \leq d(v, w) \}
+	    $$
+        die \emph{Dirichletzelle} von $u$ und $O$.
+    \end{definition} \pause
+    Oft nutzen wir die äquivalente Formulierung
+    $$
+		D(u, O) = \bigcap_{w \in O, w \neq u} H^+(u, w).
+	$$
+\end{frame}
+
+
+\begin{frame}
+    \begin{definition}
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $v \in \R^n$ ein Vektor.
+        Wir nennen $v$ in \emph{spezieller Lage} bzgl. $\Gamma$, falls 
+        $$
+            Stab_\Gamma(v) \neq \{Id\},
+        $$
+        sonst nennen wir ihn in \emph{allgemeiner Lage}.
+    \end{definition}
+    \pause
+    \begin{theorem}[{\cite[Thm. III.11 (ii)]{plesken1994}}]
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $u \in \R^n$ in allgemeiner Lage. Dann ist $D(u, u^\Gamma)$ ein Fundamentalbereich von $\Gamma$.
+    \end{theorem}
+    \pause
+    Erinnerung:
+    $$
+		D(u, O) = \bigcap_{w \in O, w \neq u} H^+(u, w).
+	$$
+\end{frame}
+
+\begin{frame}
+    \begin{alertblock}{Problem}
+        $u^\Gamma$ ist unendlich.
+    \end{alertblock}
+\end{frame}
 
 \section{Endliche Wortlänge}
 
 \section{Motivation}
+
+\begin{frame}
+    \printbibliography
+\end{frame}
 
 \end{document}
