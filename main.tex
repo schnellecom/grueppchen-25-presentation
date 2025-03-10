@@ -46,7 +46,7 @@ style=numeric,
 \newtheoremstyle{plain}         % name
     {\parsep}                   % Space above
     {}                          % Space below
-    {\itshape}                  % Body font
+    {}                          % Body font
     {}                          % Indent amount
     {\bfseries}                 % Theorem head font
     {.}                         % Punctuation after theorem head
@@ -104,10 +104,10 @@ style=numeric,
 \makeatother
 
 
-\title{Computing fundamental domains of crystallographic groups}
-\subtitle{With connections to topological interlocking}
+\title{Berechnung von Dirichletzellen kristallographischer Gruppen mittels endlicher Wortlänge }
+% \subtitle{With connections to topological interlocking}
 \author{Lukas Schnelle}
-\date{GAPDays Summer 2024 \\ This is joint work with Alice C. Niemeyer and Reymond Akpanya}
+\date{Grüppchen 2025 \\ In Zusammenarbeit mit \\Alice C. Niemeyer und Reymond Akpanya}
 
 
 \begin{document}
@@ -115,6 +115,83 @@ style=numeric,
 % remove dots on first slide
 \frame[plain]{\titlepage}
 
+\section{Kristallographische Gruppen}
+\begin{frame}
+    In diesem Vortrag operieren wir von rechts, also z.B. ein Gruppenelement $\phi \in G$ einer Gruppe $G$ die auf einer Menge $M$ operiert, wird bezeichnet als $m^\phi$ für $m \in M$.
+    \pause
+    \begin{notation}
+        Seien $v, w \in \R^n$ Vektoren und $r \in \R$ eine reelle Zahl. \pause 
+        Dann bezeichnen wir mit 
+        \begin{enumerate}[label=(\roman*)]
+            \item $\langle v, w \rangle$ das Euklidische Skalarprodukt,\pause
+            \item $||v|| \coloneqq \sqrt{\langle v, v \rangle}$ die Euklidische Norm,\pause
+            \item $d(v, w) \coloneqq ||v - w ||$ die Euklidische Distanz,\pause
+            \item $B_r(v) \coloneqq \{ u \in \R^n \mid d(v, u) < r \}$ den offenen $r$-Ball und mit \pause
+            \item $\overline{B_r(v)} \coloneqq \{ u \in \R^n \mid d(v, u) \leq r \}$ den abgeschlossenen $r$-Ball. 
+        \end{enumerate}  
+    \end{notation}
+    \pause
+    Kurz: Unsere Welt ist eine Euklidische.
 
+%     \pause
+%     \begin{definition}
+%         Seien $u, v \in \R^n$ Vektoren. Wir nennen
+%         $$
+%             H^+(u, v) \coloneqq \{ w \in \R^n \mid d(u,w) \leq d(v, w) \}
+%         $$
+%         den \emph{Halbraum} von $u$ und $v$.
+%     \end{definition}
+\end{frame}
+
+\begin{frame}
+    \begin{definition}
+        Sei $n \in \N$ und $\phi: \R^n \to \R^n$. Dann bezeichnen wir $\phi$ also \emph{Isometrie}, falls für alle $v, w \in R^n$ gilt, dass:
+        $$
+            d(v^\phi, w^\phi) = d(v, w).
+        $$\pause
+        Die Menge aller Isometrien zu einem festen $n$ bezeichnen wir mit $E(n)$.
+    \end{definition}
+    \pause
+    \begin{proposition}
+        Sei $n \in \N$ fest. Dann ist die Menge aller Isometrien $E(n)$ eine Gruppe mit der Konkatenation von Abbildungen als Gruppenoperation.
+        Diese Gruppe bezeichnen wir als die \emph{euklidische Gruppe}. Die Gruppe operiert auf $\R^n$ durch die Anwendung eines Gruppenelements als Abbildung.
+    \end{proposition}
+\end{frame}
+% Bsp?
+% system of representatives
+\begin{frame}
+    \begin{definition}
+        Sei $\Gamma \leq E(n)$ eine Untergruppe und $F \subseteq \R^n$ eine abgeschlossene Menge. Dann heißt $F$ ein \emph{Fundamentalbereich} von $\Gamma$ falls
+        \begin{enumerate}[label=(\roman*)]
+            \item $\bigcup_{\gamma \in \Gamma} F^\gamma = \R^n$\pause
+            \item es gibt ein Vertretersystem $V \subseteq \R^n$ von den Bahnen der Operation von $\Gamma$ auf $\R^n$, sodass
+                $$
+                    F^\circ \subseteq V \subseteq F.
+                $$
+        \end{enumerate}
+    \end{definition}
+
+    \pause
+    \begin{definition}
+        Sei $\Gamma \leq E(n)$ eine Untergruppe. Dann heißt $\Gamma$ kristallographische Gruppe falls $\Gamma$ eine diskrete Untergruppe ist und ein kompakter Fundamentalbereich von $\Gamma$ existiert.
+    \end{definition}
+    In der Literatur werden kristallographische Gruppen (insbesondere der Dimension $3$) auch als Raumgruppen bezeichnet.
+\end{frame}
+
+\begin{frame}
+    TODO: Bieberbach
+\end{frame}
+
+\begin{frame}
+    \begin{alertblock}{test}
+        gfddsg
+    \end{alertblock}
+\end{frame}
+
+\section{Dirichletzellen}
+
+\section{Endliche Wortlänge}
+
+\section{Motivation}
 
 \end{document}
