@@ -1,0 +1,120 @@
+\documentclass{beamer}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{microtype}
+\usepackage{ellipsis}
+%\usepackage[ngerman]{babel}
+\let\openbox\undefined
+\usepackage{mathtools}
+\usepackage{enumitem}
+\let\openbox\undefined
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{algpseudocode}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{url}
+\usepackage[
+backend=biber,
+style=numeric,
+]{biblatex}
+\addbibresource{references.bib}
+\usepackage[normalem]{ulem}
+\usepackage{verbatim}
+\usepackage{subcaption} % allow for subfigures
+
+\usepackage[ruled, algosection]{algorithm2e}
+
+
+\declaretheoremstyle[
+  spaceabove=\parsep,
+  spacebelow=0,
+  headfont=\bfseries,
+  notefont=\bfseries,
+  notebraces={(}{)},
+  bodyfont=\normalfont,
+  postheadspace=.5em
+]{definition}
+
+\newtheoremstyle{plain}         % name
+    {\parsep}                   % Space above
+    {}                          % Space below
+    {\itshape}                  % Body font
+    {}                          % Indent amount
+    {\bfseries}                 % Theorem head font
+    {.}                         % Punctuation after theorem head
+    {.5em}                      % Space after theorem head
+    {\thmname{#1}\thmnumber{ #2}\thmnote{ \bfseries (#3)}}                 % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{plain}
+
+% \declaretheorem[sharenumber=algocf]{theorem}
+% \declaretheorem[sharenumber=algocf]{lemma}
+% \declaretheorem[sharenumber=algocf]{corollary}
+\declaretheorem[sharenumber=algocf]{proposition}
+
+% \declaretheorem[sharenumber=algocf]{definition}
+% \declaretheorem[sharenumber=algocf]{example}
+\declaretheorem[sharenumber=algocf]{remark}
+\declaretheorem[sharenumber=algocf]{notation}
+
+\renewcommand\qedsymbol{$\square$}
+
+\newcommand\R{\mathbb R}
+\newcommand\Z{\mathbb Z}
+\newcommand\N{\mathbb N}
+\newcommand\C{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\ass}{\underline{Assume:}  }
+\newcommand{\zz}{\underline{t.s.:}  }
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+
+\newcommand{\stab}{\mathrm{Stab}}
+\newcommand{\conv}{\mathrm{conv}}
+\newcommand{\vol}{\mathrm{vol}}
+% \newcommand{\min}{\text{min}}
+% \newcommand{\max}{\text{max}}
+% \newcommand{\ker}{\text{ker}}
+\newcommand{\im}{{\mathrm{im}}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Aut}{{\mathrm{Aut}}}
+
+\newcommand{\T}{\mathcal{T}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\L}{\mathcal{L}}
+
+\usetheme[compress]{Berlin}
+\setbeamertemplate{footline}[frame number]{}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+
+\makeatletter
+\beamer@theme@subsectionfalse%
+\makeatother
+
+
+\title{Computing fundamental domains of crystallographic groups}
+\subtitle{With connections to topological interlocking}
+\author{Lukas Schnelle}
+\date{GAPDays Summer 2024 \\ This is joint work with Alice C. Niemeyer and Reymond Akpanya}
+
+
+\begin{document}
+
+% remove dots on first slide
+\frame[plain]{\titlepage}
+
+
+
+\end{document}

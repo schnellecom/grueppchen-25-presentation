@@ -1,0 +1,70 @@
+{
+  "AbstractHTML": "The <span class=\"pkgname\">4ti2Interface</span> package provides an interface to 4ti2",
+  "ArchiveFormats": ".tar.gz .zip",
+  "ArchiveSHA256": "1552217e91c7fa50e144467c4aa2f8b4e7c7709779e6faf0bf975353c35a93d3",
+  "ArchiveURL": "https://github.com/homalg-project/homalg_project/releases/download/4ti2Interface-2023.02-04/4ti2Interface-2023.02-04",
+  "AvailabilityTest": null,
+  "Date": "2023-02-28",
+  "Dependencies": {
+    "ExternalConditions": [
+      [
+        "4ti2",
+        "https://4ti2.github.io/"
+      ]
+    ],
+    "GAP": ">= 4.12.1",
+    "NeededOtherPackages": [
+      [
+        "io",
+        ">=4.2"
+      ]
+    ],
+    "SuggestedOtherPackages": [
+      [
+        "AutoDoc",
+        ">=2013.08.22"
+      ]
+    ]
+  },
+  "IssueTrackerURL": "https://github.com/homalg-project/homalg_project/issues",
+  "Keywords": [],
+  "License": "GPL-2.0-or-later",
+  "PackageDoc": [
+    {
+      "ArchiveURLSubset": [
+        "doc"
+      ],
+      "BookName": "4ti2Interface",
+      "HTMLStart": "doc/chap0.html",
+      "LongTitle": "A link to 4ti2",
+      "PDFFile": "doc/manual.pdf",
+      "SixFile": "doc/manual.six"
+    }
+  ],
+  "PackageInfoSHA256": "607f20a1a5156b0a5209c590d8107faee969cbb33f8bd1e7ca81c716a65fe4f4",
+  "PackageInfoURL": "https://homalg-project.github.io/homalg_project/4ti2Interface/PackageInfo.g",
+  "PackageName": "4ti2Interface",
+  "PackageWWWHome": "https://homalg-project.github.io/pkg/4ti2Interface",
+  "Persons": [
+    {
+      "Email": "gutsche@mathematik.uni-siegen.de",
+      "FirstNames": "Sebastian",
+      "Institution": "University of Siegen",
+      "IsAuthor": true,
+      "IsMaintainer": true,
+      "LastName": "Gutsche",
+      "Place": "Siegen",
+      "PostalAddress": "Department Mathematik\nUniversität Siegen\nWalter-Flex-Straße 3\n57072 Siegen\nGermany",
+      "WWWHome": "https://sebasguts.github.io"
+    }
+  ],
+  "README_URL": "https://homalg-project.github.io/homalg_project/4ti2Interface/README.md",
+  "SourceRepository": {
+    "Type": "git",
+    "URL": "https://github.com/homalg-project/homalg_project"
+  },
+  "Status": "deposited",
+  "Subtitle": "A link to 4ti2",
+  "TestFile": "tst/testall.g",
+  "Version": "2023.02-04"
+}

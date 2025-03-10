@@ -1,0 +1,21 @@
+.vscode/*
+
+# tex files
+*.bbl
+*.gz
+*.xml
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.bcf-SAVE-ERROR
+*.bbl-SAVE-ERROR
