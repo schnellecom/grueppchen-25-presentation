@@ -150,6 +150,60 @@ style=numeric,
 \end{frame}
 % Bsp?
 % system of representatives
+
+\begin{frame}
+    \begin{proposition}
+        $$
+            E(n) \cong O(n) \ltimes \R^n
+        $$
+    \end{proposition}
+    \pause
+    \begin{notation}
+        Sei $\phi \in E(n)$. Dann bezeichnen wir mit der Isomorphie von oben
+        $$
+            \phi = (\phi_o, \phi_t),
+        $$
+        wobei $\phi_o \in O(n)$ als \emph{orthogonaler Anteil} bezeichnet wird und $\phi_t \in \R^n$ als \emph{translatiorischer Anteil}.
+    \end{notation}
+    Betrachte $v \in \R^n$. Dann ist die Gruppenoperation von $\phi$ auf $v$ gegeben durch
+    $$
+        v^{(\phi_o, \phi_t)} = v^{\phi_o} + \phi_t.
+    $$
+\end{frame}
+
+\begin{frame}
+    \begin{definition}
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann wird der \emph{Translationennormalteiler} von $\Gamma$ definiert als
+        $$
+            \T(\Gamma) \coloneqq \{ (\phi_o, \phi_t) \in \Gamma \mid \phi_o = Id \}.
+        $$
+    \end{definition}
+    \begin{proposition}
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann ist $\T(\Gamma)$ ein Normalteiler. 
+    \end{proposition}
+    \begin{definition}
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann definieren wir die \emph{Punktgruppe} von $\Gamma$ als die Faktorgruppe
+        $$
+            \P(\Gamma) \coloneqq \Gamma / \T(\Gamma).
+        $$
+    \end{definition}
+\end{frame}
+
+\begin{frame}
+    \begin{proposition}
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Die Menge 
+        $$
+            \L(\Gamma) \coloneqq \{ \phi_t \mid \phi \in \T(\Gamma) \}
+        $$
+        enthält $n$ linear unabhängige Vektoren. Diese bilden ein Gitter der Dimension $n$ und spannen sogenannte \emph{Translationszellen} auf.
+    \end{proposition}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width=\textwidth]{images/p4-escher.png}
+\end{frame}
+
 \begin{frame}
     \begin{definition}
         Sei $\Gamma \leq E(n)$ eine Untergruppe und $F \subseteq \R^n$ eine abgeschlossene Menge. Dann heißt $F$ ein \emph{Fundamentalbereich} von $\Gamma$ falls
@@ -192,6 +246,15 @@ style=numeric,
     \includegraphics[width=\textwidth]{images/p4-escher.png}
 \end{frame}
 
+% translationszelle?
+\begin{frame}
+    \begin{theorem}
+        Sei $\Gamma$ eine kristallographische Gruppe mit Fundamentalbereich $F$ und Translationszelle $C$. Dann gilt
+        $$
+            vol(F) = \frac{vol(C)}{|\P(\Gamma)|}
+        $$
+    \end{theorem}
+\end{frame}
 
 \section{Dirichletzellen}
 \begin{frame}
@@ -257,6 +320,8 @@ style=numeric,
     \includegraphics[width=0.7\textwidth]{images/dirichlet-example.png}
 \end{frame}
 
+\section{Endliche Wortlänge}
+
 \begin{frame}
     \begin{alertblock}{Problem}
         $u^\Gamma$ ist unendlich.
@@ -273,13 +338,71 @@ style=numeric,
     \end{block}
 \end{frame}
 
+% \begin{frame}
+%     \begin{notation}
+%         Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe mit Fundamentalbereich $F$. Dann wählen wir Erzeugende von $\Gamma$ und $I, K$ endliche Indexmengen sodass
+%         $$
+%             \Gamma = \langle \rho_i, \tau_k \mid i \in I, k \in K \rangle,
+%         $$
+%         wobei $\tau_k \in \T(\Gamma)$ für alle $k \in K$ und für alle $i \in I$ sei $\rho_i \in \Gamma$ so gewählt, dass
+%         $$
+%             \Gamma = \bigcup_{i \in I} \rho_i \tau(\Gamma).
+%         $$
+%     \end{notation}
+
+% \end{frame}
+
+% angeben, dass neu?
 \begin{frame}
-    fsdfsd
+    \begin{theorem}
+        Sei $\Gamma \leq E(n)$ kristallographische Gruppe und $u \in \R^n$. Dann existiert ein $A \in \N$ sodass die Dirichletzelle $D(u, u^\Gamma)$ berechnet werden kann, als Schnitt der Halbräume $H^+(u, u^\gamma)$ für $\gamma \in \Gamma$ Wörter der Länge maximal $A+1$.  
+    \end{theorem} \pause
+    Damit haben wir einen Zugang, um Fundamentalbereiche in endlichen Schritten (algorithmisch) zu bestimmen. Leider ist $A$ im Allgemeinen nicht einfach bestimmbar.
 \end{frame}
 
-\section{Endliche Wortlänge}
+\begin{frame}
+    \scalebox{.8}{\begin{minipage}{1.33\textwidth}
+    \begin{algorithm}[H]
+        \caption{Dirichlet Cell}\label{alg:dirichletcell}
+        \LinesNumberedHidden
+        \SetAlgoLined
+        \KwData{eine kristallographische Gruppe $\Gamma \leq E(n)$ und $u \in \R^n$, ein Punkt in allgemeiner Lage, sowie eine Menge $gens$ an Erzeugern von $\Gamma$.}
+        \KwResult{$triangularComplex$, ein Fundamentalbereich. }
+    
+        $fundamentalVolume \gets $ Volumen eines Fundamentalbereichs\;
+        $currentWords \gets gens$
+    
+        $currentElementsInOrbit \gets [ u^\gamma \mid \gamma \in gens ]$ \;
+    
+        $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentElementsInOrbit$\;
+        $fundamentalDomainCandidate \gets$ gegeben durch Schnitt von $currentHalfspaces$\;
+    
+        \While{$vol(fundamentalDomainCandidate) < fundamentalVolume$}{
+            $currentWords \gets [currentWords, [word \cdot gen \mid word \in currentWords,  gen \in gens]]$\;
+    
+            \For{ $\gamma \in currentWords$}{
+                Add(currentElementsInOrbit, $u^\gamma$)\;
+            }
+    
+            $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentWords$\;
+            $fundamentalDomainCandidate \gets$ gegeben durch Schnitt von $currentHalfspaces$\;
+        }
+    
+        return $fundamentalDomainCandidate$\;
+    \end{algorithm}
+    \end{minipage}}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Erweiterungen}
+        \begin{itemize}[label=]
+            \item 
+        \end{itemize}
+    \end{block}    
+\end{frame}
 
 \section{Motivation}
+
 
 \begin{frame}
     \printbibliography
