@@ -117,32 +117,21 @@ style=numeric,
 
 \section{Kristallographische Gruppen}
 \begin{frame}
-    In diesem Vortrag operieren wir von rechts, also z.B. ein Gruppenelement $\phi \in G$ einer Gruppe $G$ die auf einer Menge $M$ operiert, wird bezeichnet als $m^\phi$ für $m \in M$.
-    \pause
     \begin{notation}
-        Seien $v, w \in \R^n$ Vektoren und $r \in \R$ eine reelle Zahl. \pause 
-        Dann bezeichnen wir mit 
-        \begin{enumerate}[label=(\roman*)]
-            \item $\langle v, w \rangle$ das Euklidische Skalarprodukt,\pause
-            \item $||v|| \coloneqq \sqrt{\langle v, v \rangle}$ die Euklidische Norm,\pause
-            \item $d(v, w) \coloneqq ||v - w ||$ die Euklidische Distanz,\pause
-            \item $B_r(v) \coloneqq \{ u \in \R^n \mid d(v, u) < r \}$ den offenen $r$-Ball und mit \pause
-            \item $\overline{B_r(v)} \coloneqq \{ u \in \R^n \mid d(v, u) \leq r \}$ den abgeschlossenen $r$-Ball. 
-        \end{enumerate}  
+        Seien $v, w \in \R^n$ Vektoren. \pause 
+        Dann bezeichnen wir mit $d(v, w) \coloneqq ||v - w ||$ die Euklidische Distanz.
     \end{notation}
     \pause
-    Kurz: Unsere Welt ist eine Euklidische.
-\end{frame}
-
-\begin{frame}
     \begin{definition}
-        Sei $n \in \N$ und $\phi: \R^n \to \R^n$. Dann bezeichnen wir $\phi$ also \emph{Isometrie}, falls für alle $v, w \in R^n$ gilt, dass:
+        Sei $n \in \N$ und $\phi: \R^n \to \R^n$. Dann bezeichnen wir $\phi$ also \emph{Isometrie}, falls für alle $v, w \in \R^n$ gilt, dass:
         $$
             d(v^\phi, w^\phi) = d(v, w).
         $$\pause
         Die Menge aller Isometrien zu einem festen $n$ bezeichnen wir mit $E(n)$.
     \end{definition}
-    \pause
+\end{frame}
+
+\begin{frame}
     \begin{proposition}
         Sei $n \in \N$ fest. Dann ist die Menge aller Isometrien $E(n)$ eine Gruppe mit der Konkatenation von Abbildungen als Gruppenoperation.
         Diese Gruppe bezeichnen wir als die \emph{euklidische Gruppe}. Die Gruppe operiert auf $\R^n$ durch die Anwendung eines Gruppenelements als Abbildung.
@@ -172,21 +161,48 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    \begin{definition}
+    \begin{block}{Beispiel}
+        Betrachte die Gruppe erzeugt als
+        $$
+            \langle \pi, \tau_1, \tau_2 \rangle
+        $$
+        wobei
+        \begin{align*}
+            \action<1->{
+            &\pi = \left( \begin{pmatrix} 0 &1 \\ -1 &0\end{pmatrix}, \begin{pmatrix} 0 \\ 0 \end{pmatrix}\right),\\}
+            \action<2->{&\tau_1 = \left( \begin{pmatrix} 1 &0 \\ 0 &1\end{pmatrix},\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right), \\}
+            \action<3->{&\tau_2 = \left( \begin{pmatrix} 1 &0 \\ 0 &1\end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix}\right).}
+        \end{align*}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \only<1>{\includegraphics[width=\textwidth]{images/p4-animation/p4-no-rot.jpg}}
+    \only<2>{\includegraphics[width=\textwidth]{images/p4-animation/p4-one-rot.jpg}}
+    \only<3>{\includegraphics[width=\textwidth]{images/p4-animation/p4-two-rot.jpg}}
+    \only<4>{\includegraphics[width=\textwidth]{images/p4-animation/p4-full-rot.jpg}}
+    \only<5>{\includegraphics[width=\textwidth]{images/p4-animation/p4-one-trans.jpg}}
+    \only<6>{\includegraphics[width=\textwidth]{images/p4-animation/p4-two-trans.jpg}}
+    \only<7>{\includegraphics[width=\textwidth]{images/p4-animation/p4-three-trans.jpg}}
+    \only<8>{\includegraphics[width=\textwidth]{images/p4-animation/p4-full-trans.jpg}}
+\end{frame}
+
+
+\begin{frame}
+    \only<1,3>{\begin{proposition}
         Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann wird der \emph{Translationennormalteiler} von $\Gamma$ definiert als
         $$
             \T(\Gamma) \coloneqq \{ (\phi_o, \phi_t) \in \Gamma \mid \phi_o = Id \}.
         $$
-    \end{definition}
-    \begin{proposition}
-        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann ist $\T(\Gamma)$ ein Normalteiler. 
-    \end{proposition}
-    \begin{definition}
+        $\T(\Gamma)$ ist ein Normalteiler von $\Gamma$.
+    \end{proposition}}
+    \only<2>{\includegraphics[width=\textwidth]{images/p4-animation/p4-full-trans.jpg}}
+    \only<3>{\begin{definition}
         Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann definieren wir die \emph{Punktgruppe} von $\Gamma$ als die Faktorgruppe
         $$
             \P(\Gamma) \coloneqq \Gamma / \T(\Gamma).
         $$
-    \end{definition}
+    \end{definition}}
 \end{frame}
 
 \begin{frame}
@@ -201,7 +217,7 @@ style=numeric,
 
 \begin{frame}
     \centering
-    \includegraphics[width=\textwidth]{images/p4-escher.png}
+    \includegraphics[width=\textwidth]{images/p4-animation/p4-full-trans.jpg}
 \end{frame}
 
 \begin{frame}
@@ -224,6 +240,11 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
+    \centering
+    \includegraphics[width=\textwidth]{images/p4-animation/p4-full-trans.jpg}
+\end{frame}
+
+\begin{frame}
     In 1900 hat Hilbert 23 Probleme bei einem Kongress vorgestellt, die zu diesem Zeitpunkt ungelöst waren.
     \begin{block}{18. Hilbert Problem}
         Gibt es für festes $n$ endlich viele kristallographische Gruppen?
@@ -236,15 +257,15 @@ style=numeric,
     Für bis niedrige Dimensionen sind alle dieser Gruppen bekannt, z.B. für $n\leq 4$ hier: \cite{crystGrpsDimFour}.
 \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=\textwidth]{images/p1-escher.png}
-\end{frame}
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=\textwidth]{images/p1-escher.png}
+% \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=\textwidth]{images/p4-escher.png}
-\end{frame}
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=\textwidth]{images/p4-escher.png}
+% \end{frame}
 
 % translationszelle?
 \begin{frame}
@@ -259,7 +280,7 @@ style=numeric,
 \section{Dirichletzellen}
 \begin{frame}
     \begin{alertblock}{Problem}
-        Gegeben eine kristallographische Gruppe $\Gamma \leq E(n)$. Was ist ein Fundamentalbereich?
+        Gegeben eine kristallographische Gruppe $\Gamma \leq E(n)$ durch ein endliches Erzeugendensystem. Wie kann ein Fundamentalbereich berechnet werden?
     \end{alertblock}
     \pause
     \begin{exampleblock}{Antwort}
@@ -280,7 +301,7 @@ style=numeric,
         Sei $O \subseteq \R^n$ eine diskrete Menge und $u \in O$ ein Punkt.
         Dann nennen wir 
         $$
-		    D(u, O) \coloneqq \{ v \in \R^n \mid \forall w \in O \setminus \{ u \} : d(u, v) \leq d(v, w) \}
+		    D(u, O) \coloneqq \{ v \in \R^n \mid \forall w \in O \setminus \{ u \} : d(v, u) \leq d(v, w) \}
 	    $$
         die \emph{Dirichletzelle} von $u$ und $O$.
     \end{definition} \pause
@@ -293,6 +314,11 @@ style=numeric,
 \begin{frame}
     \centering
     \includegraphics[width=0.7\textwidth]{images/dirichlet-example.png}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/p2-hex-dirichlet.png}
 \end{frame}
 
 \begin{frame}
@@ -317,7 +343,12 @@ style=numeric,
 
 \begin{frame}
     \centering
-    \includegraphics[width=0.7\textwidth]{images/dirichlet-example.png}
+    \includegraphics[width=0.8\textwidth]{images/dirichlet-example.png}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width=\textwidth]{images/p2-hex-dirichlet.png}
 \end{frame}
 
 \section{Endliche Wortlänge}
@@ -351,6 +382,11 @@ style=numeric,
 %     \end{notation}
 
 % \end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width=\textwidth]{images/p2-hex-dirichlet.png}
+\end{frame}
 
 % angeben, dass neu?
 \begin{frame}
@@ -393,15 +429,16 @@ style=numeric,
     \end{minipage}}
 \end{frame}
 
-\begin{frame}
-    \begin{block}{Erweiterungen}
-        \begin{itemize}[label=]
-            \item 
-        \end{itemize}
-    \end{block}    
-\end{frame}
+% \begin{frame}
+%     \begin{block}{Erweiterungen}
+%         \begin{itemize}[label=\textbullet]
+%             \item Verifikation von 
+%         \end{itemize}
+%     \end{block}    
+% \end{frame}
 
 \section{Motivation}
+
 
 
 \begin{frame}
