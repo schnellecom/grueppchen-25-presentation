@@ -115,6 +115,17 @@ style=numeric,
 % remove dots on first slide
 \frame[plain]{\titlepage}
 
+\section{TIA}
+\begin{frame}{Topologisch interlockende Baugruppen}
+    \begin{exampleblock}{Ziel}
+        Konstruiere eine Anordnung von gleichen Blöcken, sodass wenn ein Teil davon fixiert ist, alle Blöcke fixiert sind.
+    \end{exampleblock}
+    \pause
+    \begin{block}{Bisherige Arbeiten}
+        In \cite{GoertzenPhD} wurden solche Blöcke durch Deformation von Fundamentalbereichen erzeugt.
+    \end{block}
+\end{frame}
+
 \section{Kristallographische Gruppen}
 \begin{frame}
     \begin{notation}
@@ -123,37 +134,44 @@ style=numeric,
     \end{notation}
     \pause
     \begin{definition}
-        Sei $n \in \N$ und $\phi: \R^n \to \R^n$. Dann bezeichnen wir $\phi$ also \emph{Isometrie}, falls für alle $v, w \in \R^n$ gilt, dass:
+        Seien $n \in \N$ und $\phi: \R^n \to \R^n$. Dann bezeichnen wir $\phi$ als \emph{Isometrie}, falls für alle $v, w \in \R^n$:
         $$
             d(v^\phi, w^\phi) = d(v, w).
         $$\pause
-        Die Menge aller Isometrien zu einem festen $n$ bezeichnen wir mit $E(n)$.
+        % Die Menge aller Isometrien zu einem festen $n$ bezeichnen wir mit $E(n)$.
+        Weiterhin
+        $$
+            E(n) \coloneqq \{ \phi \mid \phi : \R^n \to \R^n \text{ Isometrie} \}.
+        $$
     \end{definition}
 \end{frame}
 
 \begin{frame}
-    \begin{proposition}
-        Sei $n \in \N$ fest. Dann ist die Menge aller Isometrien $E(n)$ eine Gruppe mit der Konkatenation von Abbildungen als Gruppenoperation.
-        Diese Gruppe bezeichnen wir als die \emph{euklidische Gruppe}. Die Gruppe operiert auf $\R^n$ durch die Anwendung eines Gruppenelements als Abbildung.
-    \end{proposition}
+    \begin{remark}
+        Sei $n \in \N$ fest. Dann
+        \begin{itemize}[label=\textbullet]
+            \item $(E(n), \circ)$ ist Gruppe, genannt \emph{Euklidische Gruppe},
+            \item $E(n)$ wirkt auf $\R^n$.
+        \end{itemize} 
+    \end{remark}
+    \pause
+    \begin{notation}
+        Sei $n \in \N$. Wir bezeichnen mit $O(n)$ die \emph{orthogonale Gruppe}. Diese ist isomorph zur Menge der orthogonalen $n \times n$ Matrizen.  
+    \end{notation}
+    
+    
+    % Dann ist die Menge aller Isometrien $E(n)$ eine Gruppe mit der Konkatenation von Abbildungen als Gruppenoperation.
+    % Diese Gruppe bezeichnen wir als die \emph{euklidische Gruppe}. Die Gruppe operiert auf $\R^n$ durch die Anwendung eines Gruppenelements als Abbildung.
 \end{frame}
 % Bsp?
 % system of representatives
 
 \begin{frame}
-    \begin{proposition}
-        $$
-            E(n) \cong O(n) \ltimes \R^n
-        $$
-    \end{proposition}
-    \pause
-    \begin{notation}
-        Sei $\phi \in E(n)$. Dann bezeichnen wir mit der Isomorphie von oben
-        $$
-            \phi = (\phi_o, \phi_t),
-        $$
-        wobei $\phi_o \in O(n)$ als \emph{orthogonaler Anteil} bezeichnet wird und $\phi_t \in \R^n$ als \emph{translatiorischer Anteil}.
-    \end{notation}
+    Es gilt, $E(n) \cong O(n) \ltimes \R^n$. D.h. für $\phi \in E(n)$ schreibe
+    $$
+        \phi = (\phi_o, \phi_t),
+    $$
+    wobei $\phi_o \in O(n)$ als \emph{orthogonaler Anteil} bezeichnet wird und $\phi_t \in \R^n$ als \emph{translatiorischer Anteil}. \\
     Betrachte $v \in \R^n$. Dann ist die Gruppenoperation von $\phi$ auf $v$ gegeben durch
     $$
         v^{(\phi_o, \phi_t)} = v^{\phi_o} + \phi_t.
@@ -284,7 +302,7 @@ style=numeric,
     \end{alertblock}
     \pause
     \begin{exampleblock}{Antwort}
-        Dirichletzellen
+        Hier: Algorithmus für Dirichletzellen
     \end{exampleblock}
 \end{frame}
 
