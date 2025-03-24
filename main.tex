@@ -180,9 +180,9 @@ style=numeric,
 
 \begin{frame}
     \begin{block}{Beispiel}
-        Betrachte die Gruppe erzeugt als
+        Betrachte
         $$
-            \langle \pi, \tau_1, \tau_2 \rangle
+            p4 \coloneqq \langle \pi, \tau_1, \tau_2 \rangle
         $$
         wobei
         \begin{align*}
@@ -229,7 +229,8 @@ style=numeric,
         $$
             \L(\Gamma) \coloneqq \{ \phi_t \mid \phi \in \T(\Gamma) \}
         $$
-        enthält $n$ linear unabhängige Vektoren. Diese bilden ein Gitter der Dimension $n$ und spannen sogenannte \emph{Translationszellen} auf.
+        enthält $n$ linear unabhängige Vektoren. 
+        % Diese bilden ein Gitter der Dimension $n$ und spannen sogenannte \emph{Translationszellen} auf.
     \end{proposition}
 \end{frame}
 
@@ -263,13 +264,13 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    In 1900 hat Hilbert 23 Probleme bei einem Kongress vorgestellt, die zu diesem Zeitpunkt ungelöst waren.
+    In 1900 hat Hilbert 23 Probleme bei einem Kongress vorgestellt, die zu diesem Zeitpunkt ungelöst waren. \pause
     \begin{block}{18. Hilbert Problem}
-        Gibt es für festes $n$ endlich viele kristallographische Gruppen?
+        Gibt es für festes $n$ \textbf{endlich} viele kristallographische Gruppen?
     \end{block}
     \pause
     \begin{exampleblock}{Bieberbachsche Sätze (1910)}
-        Ja, für festes $n \in \N$ gibt es nur endlich viele kristallographische Gruppen. \\
+        \textbf{Ja}, für festes $n \in \N$ gibt es nur endlich viele kristallographische Gruppen. \\
         Für $n=2$ gibt es $17$, für $n=3$ gibt es $230$.
     \end{exampleblock}
     Für bis niedrige Dimensionen sind alle dieser Gruppen bekannt, z.B. für $n\leq 4$ hier: \cite{crystGrpsDimFour}.
@@ -306,57 +307,56 @@ style=numeric,
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}
-    \begin{definition}
-        Seien $u, v \in \R^n$ Vektoren. Wir nennen
-        $$
-            H^+(u, v) \coloneqq \{ w \in \R^n \mid d(u,w) \leq d(v, w) \}
-        $$
-        den \emph{Halbraum} von $u$ und $v$.
-    \end{definition}
-    \pause
-    \begin{definition}
-        Sei $O \subseteq \R^n$ eine diskrete Menge und $u \in O$ ein Punkt.
-        Dann nennen wir 
-        $$
-		    D(u, O) \coloneqq \{ v \in \R^n \mid \forall w \in O \setminus \{ u \} : d(v, u) \leq d(v, w) \}
-	    $$
-        die \emph{Dirichletzelle} von $u$ und $O$.
-    \end{definition} \pause
-    Oft nutzen wir die äquivalente Formulierung
-    $$
-		D(u, O) = \bigcap_{w \in O, w \neq u} H^+(u, w).
-	$$
-\end{frame}
+% \begin{frame}
+%     \begin{definition}
+%         Seien $u, v \in \R^n$ Vektoren. Wir nennen
+%         $$
+%             H^+(u, v) \coloneqq \{ w \in \R^n \mid d(u,w) \leq d(v, w) \}
+%         $$
+%         den \emph{Halbraum} von $u$ und $v$.
+%     \end{definition}
+%     \pause
+%     \begin{definition}
+%         Sei $O \subseteq \R^n$ eine diskrete Menge und $u \in O$ ein Punkt.
+%         Dann nennen wir 
+%         $$
+% 		    D(u, O) \coloneqq \{ v \in \R^n \mid \forall w \in O \setminus \{ u \} : d(v, u) \leq d(v, w) \}
+% 	    $$
+%         die \emph{Dirichletzelle} von $u$ und $O$.
+%     \end{definition} \pause
+%     Oft nutzen wir die äquivalente Formulierung
+%     $$
+% 		D(u, O) = \bigcap_{w \in O, w \neq u} H^+(u, w).
+% 	$$
+% \end{frame}
+
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{images/dirichlet-example.png}
+% \end{frame}
+
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=0.7\textwidth]{images/p2-hex-dirichlet.png}
+% \end{frame}
 
 \begin{frame}
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/dirichlet-example.png}
-\end{frame}
-
-\begin{frame}
-    \centering
-    \includegraphics[width=0.7\textwidth]{images/p2-hex-dirichlet.png}
-\end{frame}
-
-\begin{frame}
-    \begin{definition}
-        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $v \in \R^n$ ein Vektor.
-        Wir nennen $v$ in \emph{spezieller Lage} bzgl. $\Gamma$, falls 
+    % \begin{definition}
+    %     Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $v \in \R^n$ ein Vektor.
+    %     Wir nennen $v$ in \emph{spezieller Lage} bzgl. $\Gamma$, falls 
+    %     $$
+    %         Stab_\Gamma(v) \neq \{Id\},
+    %     $$
+    %     sonst nennen wir ihn in \emph{allgemeiner Lage}.
+    % \end{definition}
+    % \pause
+    \begin{theorem}[Dirichlet, {\cite[Thm. III.11 (ii)]{plesken1994}}]
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $u \in \R^n$ in allgemeiner Lage. Dann ist 
         $$
-            Stab_\Gamma(v) \neq \{Id\},
-        $$
-        sonst nennen wir ihn in \emph{allgemeiner Lage}.
-    \end{definition}
-    \pause
-    \begin{theorem}[{\cite[Thm. III.11 (ii)]{plesken1994}}]
-        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $u \in \R^n$ in allgemeiner Lage. Dann ist $D(u, u^\Gamma)$ ein Fundamentalbereich von $\Gamma$.
+            D(u, u^\Gamma) = \bigcap_{w \in u^\Gamma, w \neq u} H^+(u, w).
+        $$ 
+        ein Fundamentalbereich von $\Gamma$.
     \end{theorem}
-    \pause
-    Erinnerung:
-    $$
-		D(u, O) = \bigcap_{w \in O, w \neq u} H^+(u, w).
-	$$
 \end{frame}
 
 \begin{frame}
@@ -372,6 +372,9 @@ style=numeric,
 \section{Endliche Wortlänge}
 
 \begin{frame}
+    $$
+        D(u, u^\Gamma) = \bigcap_{w \in u^\Gamma, w \neq u} H^+(u, w).
+    $$ 
     \begin{alertblock}{Problem}
         $u^\Gamma$ ist unendlich.
     \end{alertblock}
@@ -417,35 +420,68 @@ style=numeric,
 \begin{frame}
     \scalebox{.8}{\begin{minipage}{1.33\textwidth}
     \begin{algorithm}[H]
-        \caption{Dirichlet Cell}\label{alg:dirichletcell}
+        \caption{Dirichlet Zelle}\label{alg:dirichletcell}
         \LinesNumberedHidden
         \SetAlgoLined
         \KwData{eine kristallographische Gruppe $\Gamma \leq E(n)$ und $u \in \R^n$, ein Punkt in allgemeiner Lage, sowie eine Menge $gens$ an Erzeugern von $\Gamma$.}
         \KwResult{$triangularComplex$, ein Fundamentalbereich. }
     
-        $fundamentalVolume \gets $ Volumen eines Fundamentalbereichs\;
-        $currentWords \gets gens$
+        % $fundamentalVolume \gets $ Volumen eines Fundamentalbereichs\;
+        % $currentWords \gets gens$
     
-        $currentElementsInOrbit \gets [ u^\gamma \mid \gamma \in gens ]$ \;
+        % $currentElementsInOrbit \gets [ u^\gamma \mid \gamma \in gens ]$ \;
     
-        $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentElementsInOrbit$\;
-        $fundamentalDomainCandidate \gets$ gegeben durch Schnitt von $currentHalfspaces$\;
+        % $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentElementsInOrbit$\;
+        $fundamentalDomainCandidate \gets$ gegeben durch Schnitt über $gens$\;
     
         \While{$vol(fundamentalDomainCandidate) < fundamentalVolume$}{
-            $currentWords \gets [currentWords, [word \cdot gen \mid word \in currentWords,  gen \in gens]]$\;
+            % $currentWords \gets [currentWords, [word \cdot gen \mid word \in currentWords,  gen \in gens]]$\;
     
-            \For{ $\gamma \in currentWords$}{
-                Add(currentElementsInOrbit, $u^\gamma$)\;
-            }
+            % \For{ $\gamma \in currentWords$}{
+            %     Add(currentElementsInOrbit, $u^\gamma$)\;
+            % }
     
-            $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentWords$\;
-            $fundamentalDomainCandidate \gets$ gegeben durch Schnitt von $currentHalfspaces$\;
+            % $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentWords$\;
+            $fundamentalDomainCandidate \gets$ gegeben durch Schnitt über Wortlänge $+1$\;
         }
     
         return $fundamentalDomainCandidate$\;
     \end{algorithm}
     \end{minipage}}
 \end{frame}
+
+% \begin{frame}
+%     \scalebox{.8}{\begin{minipage}{1.33\textwidth}
+%     \begin{algorithm}[H]
+%         \caption{Dirichlet Cell}\label{alg:dirichletcell}
+%         \LinesNumberedHidden
+%         \SetAlgoLined
+%         \KwData{eine kristallographische Gruppe $\Gamma \leq E(n)$ und $u \in \R^n$, ein Punkt in allgemeiner Lage, sowie eine Menge $gens$ an Erzeugern von $\Gamma$.}
+%         \KwResult{$triangularComplex$, ein Fundamentalbereich. }
+    
+%         $fundamentalVolume \gets $ Volumen eines Fundamentalbereichs\;
+%         $currentWords \gets gens$
+    
+%         $currentElementsInOrbit \gets [ u^\gamma \mid \gamma \in gens ]$ \;
+    
+%         $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentElementsInOrbit$\;
+%         $fundamentalDomainCandidate \gets$ gegeben durch Schnitt von $currentHalfspaces$\;
+    
+%         \While{$vol(fundamentalDomainCandidate) < fundamentalVolume$}{
+%             $currentWords \gets [currentWords, [word \cdot gen \mid word \in currentWords,  gen \in gens]]$\;
+    
+%             \For{ $\gamma \in currentWords$}{
+%                 Add(currentElementsInOrbit, $u^\gamma$)\;
+%             }
+    
+%             $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentWords$\;
+%             $fundamentalDomainCandidate \gets$ gegeben durch Schnitt von $currentHalfspaces$\;
+%         }
+    
+%         return $fundamentalDomainCandidate$\;
+%     \end{algorithm}
+%     \end{minipage}}
+% \end{frame}
 
 % \begin{frame}
 %     \begin{block}{Erweiterungen}
