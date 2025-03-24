@@ -62,7 +62,7 @@ style=numeric,
 
 % \declaretheorem[sharenumber=algocf]{definition}
 % \declaretheorem[sharenumber=algocf]{example}
-\declaretheorem[sharenumber=algocf]{remark}
+\declaretheorem[sharenumber=algocf, name=Bemerkung]{remark}
 \declaretheorem[sharenumber=algocf]{notation}
 
 \renewcommand\qedsymbol{$\square$}
@@ -118,12 +118,45 @@ style=numeric,
 \section{TIA}
 \begin{frame}{Topologisch interlockende Baugruppen}
     \begin{exampleblock}{Ziel}
-        Konstruiere eine Anordnung von gleichen Blöcken, sodass wenn ein Teil davon fixiert ist, alle Blöcke fixiert sind.
+        Konstruiere eine Anordnung von gleichen Blöcken, sodass wenn ein Teil fixiert ist, alles fixiert ist.
     \end{exampleblock}
     \pause
-    \begin{block}{Bisherige Arbeiten}
-        In \cite{GoertzenPhD} wurden solche Blöcke durch Deformation von Fundamentalbereichen erzeugt.
+    \begin{block}{Existenz}
+        Gibt es solche Blöcke?
     \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{exampleblock}{Beispiel}
+        Alle fünf platonischen Solide
+        \begin{columns}
+            \begin{column}{0.5\textwidth}
+                \begin{itemize}[label=\textbullet]
+                    \item Tetraeder 
+                    \item Hexaeder (a.k.a. Würfel) 
+                    \item Oktaeder 
+                    \item Dodekaeder 
+                    \item Ikosaeder 
+                \end{itemize}
+            \end{column}
+            \begin{column}{0.5\textwidth}
+                \centering
+                \includegraphics[width=0.3\textwidth]{images/tet.png}
+                \includegraphics[width=0.3\textwidth]{images/cube.png}
+                \includegraphics[width=0.3\textwidth]{images/oct.png} \\
+                \includegraphics[width=0.3\textwidth]{images/dodec.png}
+                \includegraphics[width=0.3\textwidth]{images/ico.png}
+            \end{column}
+    \end{columns}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Bisherige Arbeiten}
+        In \cite{GoertzenPhD} wurden solche Blöcke durch Deformation von \textbf{Fundamentalbereichen} von  \textbf{kristallographischer Gruppen} erzeugt.
+    \end{block}
+    \includegraphics[width=0.48\textwidth]{images/p1.png}
+    \includegraphics[width=0.48\textwidth]{images/p4.png}
 \end{frame}
 
 \section{Kristallographische Gruppen}
@@ -171,8 +204,8 @@ style=numeric,
     $$
         \phi = (\phi_o, \phi_t),
     $$
-    wobei $\phi_o \in O(n)$ als \emph{orthogonaler Anteil} bezeichnet wird und $\phi_t \in \R^n$ als \emph{translatiorischer Anteil}. \\
-    Betrachte $v \in \R^n$. Dann ist die Gruppenoperation von $\phi$ auf $v$ gegeben durch
+    wobei $\phi_o \in O(n)$ als \emph{orthogonaler Anteil} bezeichnet wird und $\phi_t \in \R^n$ als \emph{translatiorischer Anteil}. \\ \pause
+    Betrachte $v \in \R^n$. Dann wirkt $\phi$ auf $v$ indem
     $$
         v^{(\phi_o, \phi_t)} = v^{\phi_o} + \phi_t.
     $$
@@ -492,10 +525,55 @@ style=numeric,
 % \end{frame}
 
 \section{Motivation}
+\begin{frame}
+    Bisher: zwei-dimensional.
+    \begin{block}{Erweiterung}
+         Alle Aussagen gelten für $n \in \N$. Damit erhalten wir Zugang zu den 230 drei-dimensionalen kristallographischen Gruppen.
+    \end{block}
+\end{frame}
 
+\begin{frame}
+    \begin{block}{Vorgehen}
+        \begin{enumerate}[label=(\roman*)]
+            \item Generiere Fundamentalbereich einer kristallographischen Gruppe
+            \item Deformiere diesen Fundamentalbereich
+            \item Prüfe ob topologisches Interlocking vorliegt
+        \end{enumerate}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{exampleblock}{Anwendungen}
+        \begin{itemize}[label=\textbullet]
+            \item doppelt gekrümmte Baugruppen
+            \item i.A. nicht planare Baugruppen
+            \item füllung spezieller Formen
+            \item materialminimerte Kraftabtragung
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Offene Themen}
+        \begin{itemize}[label=\textbullet]
+            \item Verbesserung/Nachweis der (optimimalität) der Schranken
+            \item Allgemeine Verfügbarkeit in einer Software
+            \item Charakterisierung wann topologische Interlockings entstehen
+            \item Charakterisierung welche topologische Interlockings "gut" sind
+        \end{itemize}
+    \end{block}
+\end{frame}
 
 
 \begin{frame}
+    \begin{center}
+        Vielen Dank für die Aufmerksamkeit \\ 
+        Gibt es Fragen?
+    \end{center}
+    \vspace{1em}
+    \hrule
+    \vspace{1em}
+    Referenzen:
     \printbibliography
 \end{frame}
 
