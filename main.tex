@@ -26,12 +26,21 @@ backend=biber,
 style=numeric,
 ]{biblatex}
 \addbibresource{references.bib}
+
+% remove references section
+\defbibheading{bibliography}[\bibname]{}
+
 \usepackage[normalem]{ulem}
 \usepackage{verbatim}
 \usepackage{subcaption} % allow for subfigures
 
 \usepackage[ruled, algosection]{algorithm2e}
 
+% set emph colour
+\setbeamercolor{emph}{fg=blue}
+\renewcommand<>{\emph}[1]{%
+  {\usebeamercolor[fg]{emph}\only#2{\itshape}#1}%
+}
 
 \declaretheoremstyle[
   spaceabove=\parsep,
@@ -115,7 +124,7 @@ style=numeric,
 % remove dots on first slide
 \frame[plain]{\titlepage}
 
-\section{TIA}
+\section{Motivation}
 \begin{frame}{Topologisch interlockende Baugruppen}
     \begin{exampleblock}{Ziel}
         Konstruiere eine Anordnung von gleichen Blöcken, sodass wenn ein Teil fixiert ist, alles fixiert ist.
@@ -127,8 +136,8 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    \begin{exampleblock}{Beispiel}
-        Alle fünf platonischen Solide
+    \begin{exampleblock}{Beispiele}
+        Alle fünf platonischen Körper
         \begin{columns}
             \begin{column}{0.5\textwidth}
                 \begin{itemize}[label=\textbullet]
@@ -139,21 +148,36 @@ style=numeric,
                     \item Ikosaeder 
                 \end{itemize}
             \end{column}
-            \begin{column}{0.5\textwidth}
+            \begin{column}{0.48\textwidth}
                 \centering
-                \includegraphics[width=0.3\textwidth]{images/tet.png}
-                \includegraphics[width=0.3\textwidth]{images/cube.png}
-                \includegraphics[width=0.3\textwidth]{images/oct.png} \\
-                \includegraphics[width=0.3\textwidth]{images/dodec.png}
+                \includegraphics[width=0.28\textwidth]{images/tet.png}
+                \includegraphics[width=0.29\textwidth]{images/cube.png}
+                \includegraphics[width=0.305\textwidth]{images/oct.png} \\
+                \includegraphics[width=0.285\textwidth]{images/dodec.png}
                 \includegraphics[width=0.3\textwidth]{images/ico.png}
             \end{column}
     \end{columns}
     \end{exampleblock}
+    \pause
+    \begin{block}{Definition}
+        Eine solche Anordnung heißt \emph{topological Interlocking Assembly} oder auch \emph{topologisch interlockende Baugruppe}.
+    \end{block}
 \end{frame}
 
 \begin{frame}
-    \begin{block}{Bisherige Arbeiten}
-        In \cite{GoertzenPhD} wurden solche Blöcke durch Deformation von \textbf{Fundamentalbereichen} von  \textbf{kristallographischer Gruppen} erzeugt.
+    \begin{exampleblock}{Anwendungen}
+        \begin{itemize}[label=\textbullet]
+            \item Spröde Materialien d.h. Druck, aber nicht Zug aushalten können
+            \item Viele kleine Blöcke einfacher zu transportieren/herzustellen
+            \item Zugang relativ klein
+            \item Falls Klebstoffe problematisch
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Bisherige Arbeiten der Forschungsgruppe}
+        T. Goertzen \cite{GoertzenPhD} hat solche Blöcke durch Deformation von \textbf{Fundamentalbereichen} von \textbf{kristallographischen Gruppen} erzeugt.
     \end{block}
     \includegraphics[width=0.48\textwidth]{images/p1.png}
     \includegraphics[width=0.48\textwidth]{images/p4.png}
@@ -163,11 +187,11 @@ style=numeric,
 \begin{frame}
     \begin{notation}
         Seien $v, w \in \R^n$ Vektoren. \pause 
-        Dann bezeichnen wir mit $d(v, w) \coloneqq ||v - w ||$ die Euklidische Distanz.
+        Dann $d(v, w) \coloneqq ||v - w ||$ die \emph{Euklidische Distanz}.
     \end{notation}
     \pause
     \begin{definition}
-        Seien $n \in \N$ und $\phi: \R^n \to \R^n$. Dann bezeichnen wir $\phi$ als \emph{Isometrie}, falls für alle $v, w \in \R^n$:
+        Seien $n \in \N$ und $\phi: \R^n \to \R^n$. Dann $\phi$ \emph{Isometrie}, falls $\forall v, w \in \R^n$:
         $$
             d(v^\phi, w^\phi) = d(v, w).
         $$\pause
@@ -200,12 +224,12 @@ style=numeric,
 % system of representatives
 
 \begin{frame}
-    Es gilt, $E(n) \cong O(n) \ltimes \R^n$. D.h. für $\phi \in E(n)$ schreibe
+    Es gilt, $E(n) \cong O(n) \ltimes \R^n$. D.h. für $\phi \in E(n)$
     $$
         \phi = (\phi_o, \phi_t),
     $$
-    wobei $\phi_o \in O(n)$ als \emph{orthogonaler Anteil} bezeichnet wird und $\phi_t \in \R^n$ als \emph{translatiorischer Anteil}. \\ \pause
-    Betrachte $v \in \R^n$. Dann wirkt $\phi$ auf $v$ indem
+    wobei $\phi_o \in O(n)$ \emph{orthogonaler Anteil} und $\phi_t \in \R^n$ \emph{translatorischer Anteil}. \\ \pause
+    Betrachte $v \in \R^n$. Dann
     $$
         v^{(\phi_o, \phi_t)} = v^{\phi_o} + \phi_t.
     $$
@@ -240,25 +264,25 @@ style=numeric,
 
 
 \begin{frame}
-    \only<1,3>{\begin{proposition}
-        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann wird der \emph{Translationennormalteiler} von $\Gamma$ definiert als
+    \begin{proposition}
+        Sei $\Gamma \leq E(n)$. Dann wird der \emph{Translationennormalteiler} von $\Gamma$ definiert als
         $$
             \T(\Gamma) \coloneqq \{ (\phi_o, \phi_t) \in \Gamma \mid \phi_o = Id \}.
         $$
         $\T(\Gamma)$ ist ein Normalteiler von $\Gamma$.
-    \end{proposition}}
-    \only<2>{\includegraphics[width=\textwidth]{images/p4-animation/p4-full-trans.jpg}}
-    \only<3>{\begin{definition}
-        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Dann definieren wir die \emph{Punktgruppe} von $\Gamma$ als die Faktorgruppe
+    \end{proposition}
+    \pause
+    \begin{definition}
+        Sei $\Gamma \leq E(n)$. Dann definieren wir die \emph{Punktgruppe} von $\Gamma$ als die Faktorgruppe
         $$
             \P(\Gamma) \coloneqq \Gamma / \T(\Gamma).
         $$
-    \end{definition}}
+    \end{definition}
 \end{frame}
 
 \begin{frame}
     \begin{proposition}
-        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Die Menge 
+        Sei $\Gamma \leq E(n)$. Die Menge 
         $$
             \L(\Gamma) \coloneqq \{ \phi_t \mid \phi \in \T(\Gamma) \}
         $$
@@ -267,17 +291,17 @@ style=numeric,
     \end{proposition}
 \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=\textwidth]{images/p4-animation/p4-full-trans.jpg}
-\end{frame}
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=\textwidth]{images/p4-animation/p4-full-trans.jpg}
+% \end{frame}
 
 \begin{frame}
     \begin{definition}
         Sei $\Gamma \leq E(n)$ eine Untergruppe und $F \subseteq \R^n$ eine abgeschlossene Menge. Dann heißt $F$ ein \emph{Fundamentalbereich} von $\Gamma$ falls
         \begin{enumerate}[label=(\roman*)]
-            \item $\bigcup_{\gamma \in \Gamma} F^\gamma = \R^n$\pause
-            \item es gibt ein Vertretersystem $V \subseteq \R^n$ von den Bahnen der Operation von $\Gamma$ auf $\R^n$, sodass
+            \item $\bigcup_{\gamma \in \Gamma} F^\gamma = \R^n$ und \pause
+            \item es gibt ein Vertretersystem $V \subseteq \R^n$ von den Bahnen von $\Gamma$ auf $\R^n$, sodass
                 $$
                     F^\circ \subseteq V \subseteq F.
                 $$
@@ -286,9 +310,9 @@ style=numeric,
 
     \pause
     \begin{definition}
-        Sei $\Gamma \leq E(n)$ eine Untergruppe. Dann heißt $\Gamma$ kristallographische Gruppe falls $\Gamma$ eine diskrete Untergruppe ist und ein kompakter Fundamentalbereich von $\Gamma$ existiert.
+        Sei $\Gamma \leq E(n)$ eine Untergruppe. Dann heißt $\Gamma$ \emph{kristallographische Gruppe} falls $\Gamma$ eine diskrete Untergruppe ist und ein kompakter Fundamentalbereich von $\Gamma$ existiert.
     \end{definition}
-    In der Literatur werden kristallographische Gruppen (insbesondere der Dimension $3$) auch als Raumgruppen bezeichnet.
+    In der Literatur für $n=3$ auch als Raumgruppen bezeichnet.
 \end{frame}
 
 \begin{frame}
@@ -297,36 +321,16 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    In 1900 hat Hilbert 23 Probleme bei einem Kongress vorgestellt, die zu diesem Zeitpunkt ungelöst waren. \pause
+    In 1900 hat Hilbert 23 Probleme vorgestellt, die zu diesem Zeitpunkt ungelöst waren. \pause
     \begin{block}{18. Hilbert Problem}
-        Gibt es für festes $n$ \textbf{endlich} viele kristallographische Gruppen?
+        Gegeben $n$, gibt es \textbf{endlich} viele kristallographische Gruppen?
     \end{block}
     \pause
     \begin{exampleblock}{Bieberbachsche Sätze (1910)}
-        \textbf{Ja}, für festes $n \in \N$ gibt es nur endlich viele kristallographische Gruppen. \\
-        Für $n=2$ gibt es $17$, für $n=3$ gibt es $230$.
+        \textbf{Ja}, z.B. für $n=2$ gibt es $17$, für $n=3$ gibt es $230$.
     \end{exampleblock}
-    Für bis niedrige Dimensionen sind alle dieser Gruppen bekannt, z.B. für $n\leq 4$ hier: \cite{crystGrpsDimFour}.
-\end{frame}
-
-% \begin{frame}
-%     \centering
-%     \includegraphics[width=\textwidth]{images/p1-escher.png}
-% \end{frame}
-
-% \begin{frame}
-%     \centering
-%     \includegraphics[width=\textwidth]{images/p4-escher.png}
-% \end{frame}
-
-% translationszelle?
-\begin{frame}
-    \begin{theorem}
-        Sei $\Gamma$ eine kristallographische Gruppe mit Fundamentalbereich $F$ und Translationszelle $C$. Dann gilt
-        $$
-            vol(F) = \frac{vol(C)}{|\P(\Gamma)|}
-        $$
-    \end{theorem}
+    Für niedrige Dimensionen sind diese Gruppen bekannt, z.B. \\
+    \textit{Crystallographic Groups of Four-dimensional Space} \cite{crystGrpsDimFour}.
 \end{frame}
 
 \section{Dirichletzellen}
@@ -340,53 +344,16 @@ style=numeric,
     \end{exampleblock}
 \end{frame}
 
-% \begin{frame}
-%     \begin{definition}
-%         Seien $u, v \in \R^n$ Vektoren. Wir nennen
-%         $$
-%             H^+(u, v) \coloneqq \{ w \in \R^n \mid d(u,w) \leq d(v, w) \}
-%         $$
-%         den \emph{Halbraum} von $u$ und $v$.
-%     \end{definition}
-%     \pause
-%     \begin{definition}
-%         Sei $O \subseteq \R^n$ eine diskrete Menge und $u \in O$ ein Punkt.
-%         Dann nennen wir 
-%         $$
-% 		    D(u, O) \coloneqq \{ v \in \R^n \mid \forall w \in O \setminus \{ u \} : d(v, u) \leq d(v, w) \}
-% 	    $$
-%         die \emph{Dirichletzelle} von $u$ und $O$.
-%     \end{definition} \pause
-%     Oft nutzen wir die äquivalente Formulierung
-%     $$
-% 		D(u, O) = \bigcap_{w \in O, w \neq u} H^+(u, w).
-% 	$$
-% \end{frame}
-
-% \begin{frame}
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{images/dirichlet-example.png}
-% \end{frame}
-
-% \begin{frame}
-%     \centering
-%     \includegraphics[width=0.7\textwidth]{images/p2-hex-dirichlet.png}
-% \end{frame}
+\begin{frame}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/dirichlet-example.png}
+\end{frame}
 
 \begin{frame}
-    % \begin{definition}
-    %     Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $v \in \R^n$ ein Vektor.
-    %     Wir nennen $v$ in \emph{spezieller Lage} bzgl. $\Gamma$, falls 
-    %     $$
-    %         Stab_\Gamma(v) \neq \{Id\},
-    %     $$
-    %     sonst nennen wir ihn in \emph{allgemeiner Lage}.
-    % \end{definition}
-    % \pause
-    \begin{theorem}[Dirichlet, {\cite[Thm. III.11 (ii)]{plesken1994}}]
-        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $u \in \R^n$ in allgemeiner Lage. Dann ist 
+    \begin{theorem}[Dirichlet]
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $u \in \R^n$ in allgemeiner Lage. Dann ist die \emph{Dirichletzelle} 
         $$
-            D(u, u^\Gamma) = \bigcap_{w \in u^\Gamma, w \neq u} H^+(u, w).
+            D(u, u^\Gamma) \coloneqq \bigcap_{w \in u^\Gamma, w \neq u} \left\{ w \in \R^n \mid d(u,w) \leq d(v, w) \right\}.
         $$ 
         ein Fundamentalbereich von $\Gamma$.
     \end{theorem}
@@ -394,20 +361,17 @@ style=numeric,
 
 \begin{frame}
     \centering
-    \includegraphics[width=0.8\textwidth]{images/dirichlet-example.png}
-\end{frame}
-
-\begin{frame}
-    \centering
     \includegraphics[width=\textwidth]{images/p2-hex-dirichlet.png}
 \end{frame}
 
-\section{Endliche Wortlänge}
+\section{Wortlänge}
 
 \begin{frame}
+    Erinnerung:
     $$
-        D(u, u^\Gamma) = \bigcap_{w \in u^\Gamma, w \neq u} H^+(u, w).
+        D(u, u^\Gamma) \coloneqq \bigcap_{w \in u^\Gamma, w \neq u} \left\{ w \in \R^n \mid d(u,w) \leq d(v, w) \right\}
     $$ 
+    \pause
     \begin{alertblock}{Problem}
         $u^\Gamma$ ist unendlich.
     \end{alertblock}
@@ -418,9 +382,9 @@ style=numeric,
         Halbräume die von zwei weit entfernten Punkten aufgespannt werden, haben weniger Einfluss als Halbräume, die von nahe beieinander liegenden Punkten aufgespannt werden.
     \end{block}
     \pause
-    \begin{block}{Ansatz}
+    \begin{exampleblock}{Ansatz}
         Betrachte nur Isometrien, die einen Punkt nicht "zu weit weg" operieren.
-    \end{block}
+    \end{exampleblock}
 \end{frame}
 
 % \begin{frame}
@@ -447,17 +411,28 @@ style=numeric,
     \begin{theorem}
         Sei $\Gamma \leq E(n)$ kristallographische Gruppe und $u \in \R^n$. Dann existiert ein $A \in \N$ sodass die Dirichletzelle $D(u, u^\Gamma)$ berechnet werden kann, als Schnitt der Halbräume $H^+(u, u^\gamma)$ für $\gamma \in \Gamma$ Wörter der Länge maximal $A+1$.  
     \end{theorem} \pause
+    Ist von uns bewiesen und haben noch keine entsprechende bisherige Veröffentlichung dazu gefunden.\\
+    \pause
     Damit haben wir einen Zugang, um Fundamentalbereiche in endlichen Schritten (algorithmisch) zu bestimmen. Leider ist $A$ im Allgemeinen nicht einfach bestimmbar.
+\end{frame}
+
+\begin{frame}
+    \begin{theorem}
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe mit Fundamentalbereich $F$ und Translationszelle $C$. Dann gilt
+        $$
+            vol(F) = \frac{vol(C)}{|\P(\Gamma)|}.
+        $$
+    \end{theorem}
 \end{frame}
 
 \begin{frame}
     \scalebox{.8}{\begin{minipage}{1.33\textwidth}
     \begin{algorithm}[H]
-        \caption{Dirichlet Zelle}\label{alg:dirichletcell}
+        \caption{Berechnung einer Dirichletzelle}\label{alg:dirichletcell}
         \LinesNumberedHidden
         \SetAlgoLined
-        \KwData{eine kristallographische Gruppe $\Gamma \leq E(n)$ und $u \in \R^n$, ein Punkt in allgemeiner Lage, sowie eine Menge $gens$ an Erzeugern von $\Gamma$.}
-        \KwResult{$triangularComplex$, ein Fundamentalbereich. }
+        \KwData{eine kristallographische Gruppe $\langle \gamma \mid \gamma \in gens \rangle = \Gamma \leq E(n)$ und $u \in \R^n$, ein Punkt in allgemeiner Lage.}
+        \KwResult{Ein Fundamentalbereich. }
     
         % $fundamentalVolume \gets $ Volumen eines Fundamentalbereichs\;
         % $currentWords \gets gens$
@@ -465,9 +440,10 @@ style=numeric,
         % $currentElementsInOrbit \gets [ u^\gamma \mid \gamma \in gens ]$ \;
     
         % $currentHalfspaces \gets$ Halbräume $H_{u,v}$ für alle $v \in currentElementsInOrbit$\;
+        $fundamentalVolume \gets$ Volumen berechnet mit Theorem\;  
         $fundamentalDomainCandidate \gets$ gegeben durch Schnitt über $gens$\;
     
-        \While{$vol(fundamentalDomainCandidate) < fundamentalVolume$}{
+        \While{\color{black}$vol(fundamentalDomainCandidate) > fundamentalVolume$}{
             % $currentWords \gets [currentWords, [word \cdot gen \mid word \in currentWords,  gen \in gens]]$\;
     
             % \For{ $\gamma \in currentWords$}{
@@ -524,7 +500,7 @@ style=numeric,
 %     \end{block}    
 % \end{frame}
 
-\section{Motivation}
+\section{Ergebnisse}
 \begin{frame}
     Bisher: zwei-dimensional.
     \begin{block}{Erweiterung}
@@ -540,17 +516,6 @@ style=numeric,
             \item Prüfe ob topologisches Interlocking vorliegt
         \end{enumerate}
     \end{block}
-\end{frame}
-
-\begin{frame}
-    \begin{exampleblock}{Anwendungen}
-        \begin{itemize}[label=\textbullet]
-            \item doppelt gekrümmte Baugruppen
-            \item i.A. nicht planare Baugruppen
-            \item füllung spezieller Formen
-            \item materialminimerte Kraftabtragung
-        \end{itemize}
-    \end{exampleblock}
 \end{frame}
 
 \begin{frame}
