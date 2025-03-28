@@ -119,8 +119,10 @@ style=numeric,
 \date{Grüppchen 2025 \\ In Zusammenarbeit mit \\Alice C. Niemeyer und Reymond Akpanya}
 
 \titlegraphic{
-    \includegraphics[width=0.4\textwidth]{images/art-logo.png}\hspace*{5em}~%
-    \includegraphics[width=0.4\textwidth]{images/sla-logo.png}
+    \centering
+    \vspace{4.5em}
+    \includegraphics[width=0.5\textwidth]{images/art-logo.png}\hspace*{1em}
+    \includegraphics[width=0.5\textwidth]{images/sla-logo.png}
 }
 
 \begin{document}
@@ -129,7 +131,7 @@ style=numeric,
 \frame[plain]{\titlepage}
 
 \section{Motivation}
-\begin{frame}{Topologisch interlockende Baugruppen}
+\begin{frame}
     \begin{exampleblock}{Ziel}
         Konstruiere eine Anordnung von gleichen Blöcken, sodass wenn ein Teil fixiert ist, alles fixiert ist.
     \end{exampleblock}
@@ -140,7 +142,19 @@ style=numeric,
 \end{frame}
 
 \begin{frame}
-    \begin{exampleblock}{Beispiele}
+    \begin{block}{Würfel?}
+        \centering 
+        \includegraphics[width=0.5\textwidth]{images/cube.png}
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Definition}
+        Eine solche Anordnung heißt \emph{topologisch verriegelnde Baugruppe}.
+    \end{block}
+    \pause
+    \begin{exampleblock}{Weitere Beispiele}
         Alle fünf platonischen Körper
         \begin{columns}
             \begin{column}{0.5\textwidth}
@@ -163,28 +177,36 @@ style=numeric,
     \end{columns}
     \end{exampleblock}
     \pause
-    \begin{block}{Definition}
-        Eine solche Anordnung heißt \emph{topological Interlocking Assembly} oder auch \emph{topologisch interlockende Baugruppe}.
-    \end{block}
+    
 \end{frame}
 
 \begin{frame}
     \begin{exampleblock}{Anwendungen}
         \begin{itemize}[label=\textbullet]
-            \item Spröde Materialien d.h. Druck, aber nicht Zug aushalten können
-            \item Viele kleine Blöcke einfacher zu transportieren/herzustellen
-            \item Zugang relativ klein
+            \item Reparierbarkeit \pause
+            \item Recyclebarkeit \pause
+            \item Spröde Materialien d.h. Druck, aber nicht Zug aushalten können \pause
+            \item Viele kleine Blöcke einfacher zu transportieren/herzustellen \pause
+            \item Zugang relativ klein \pause
             \item Falls Klebstoffe problematisch
         \end{itemize}
     \end{exampleblock}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Historischer Kontext}
+    Erste Interlockings in 1735 gefunden. \\ \pause
+    Wiederaufleben der Forschung durch u.a. Estrin, Dyskin, Pasternak im 21. Jahrhundert\pause
     \begin{block}{Bisherige Arbeiten der Forschungsgruppe}
-        T. Goertzen \cite{GoertzenPhD} hat solche Blöcke durch Deformation von \textbf{Fundamentalbereichen} von \textbf{kristallographischen Gruppen} erzeugt.
+        T. Goertzen \cite{GoertzenPhD} hat Verfahren für Erstellung von Blöcken durch Deformation von \textbf{Fundamentalbereichen} von \textbf{kristallographischen Gruppen} erzeugt.
     \end{block}
     \includegraphics[width=0.48\textwidth]{images/p1.png}
     \includegraphics[width=0.48\textwidth]{images/p4.png}
+\end{frame}
+
+\begin{frame}
+    \begin{exampleblock}{Ziel}
+        Verfahren erweitern von 2D auf 3D.
+    \end{exampleblock}
 \end{frame}
 
 \section{Kristallographische Gruppen}
@@ -195,7 +217,7 @@ style=numeric,
     \end{notation}
     \pause
     \begin{definition}
-        Seien $n \in \N$ und $\phi: \R^n \to \R^n$. Dann $\phi$ \emph{Isometrie}, falls $\forall v, w \in \R^n$:
+        $\phi: \R^n \to \R^n$ heißt \emph{Isometrie}, falls $\forall v, w \in \R^n$:
         $$
             d(v^\phi, w^\phi) = d(v, w).
         $$\pause
@@ -205,6 +227,7 @@ style=numeric,
             E(n) \coloneqq \{ \phi \mid \phi : \R^n \to \R^n \text{ Isometrie} \}.
         $$
     \end{definition}
+    Alle Blöcke in einer Baugruppe stehen durch Isometrien miteinander in Verbindung.
 \end{frame}
 
 \begin{frame}
@@ -212,7 +235,7 @@ style=numeric,
         Sei $n \in \N$ fest. Dann
         \begin{itemize}[label=\textbullet]
             \item $(E(n), \circ)$ ist Gruppe, genannt \emph{Euklidische Gruppe},
-            \item $E(n)$ wirkt auf $\R^n$.
+            \item $E(n)$ operiert auf $\R^n$.
         \end{itemize} 
     \end{remark}
     \pause
@@ -228,7 +251,7 @@ style=numeric,
 % system of representatives
 
 \begin{frame}
-    Es gilt, $E(n) \cong O(n) \ltimes \R^n$. D.h. für $\phi \in E(n)$
+    Es gilt $E(n) \cong O(n) \ltimes \R^n$. D.h. für $\phi \in E(n)$
     $$
         \phi = (\phi_o, \phi_t),
     $$
@@ -243,12 +266,12 @@ style=numeric,
     \begin{block}{Beispiel}
         Betrachte
         $$
-            p4 \coloneqq \langle \pi, \tau_1, \tau_2 \rangle
+            p4 \coloneqq \langle \rho, \tau_1, \tau_2 \rangle \leq E(n)
         $$
         wobei
         \begin{align*}
             \action<1->{
-            &\pi = \left( \begin{pmatrix} 0 &1 \\ -1 &0\end{pmatrix}, \begin{pmatrix} 0 \\ 0 \end{pmatrix}\right),\\}
+            &\rho = \left( \begin{pmatrix} 0 &1 \\ -1 &0\end{pmatrix}, \begin{pmatrix} 0 \\ 0 \end{pmatrix}\right),\\}
             \action<2->{&\tau_1 = \left( \begin{pmatrix} 1 &0 \\ 0 &1\end{pmatrix},\begin{pmatrix} 1 \\ 0 \end{pmatrix}\right), \\}
             \action<3->{&\tau_2 = \left( \begin{pmatrix} 1 &0 \\ 0 &1\end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix}\right).}
         \end{align*}
@@ -275,25 +298,16 @@ style=numeric,
         $$
         $\T(\Gamma)$ ist ein Normalteiler von $\Gamma$.
     \end{proposition}
-    \pause
-    \begin{definition}
-        Sei $\Gamma \leq E(n)$. Dann definieren wir die \emph{Punktgruppe} von $\Gamma$ als die Faktorgruppe
-        $$
-            \P(\Gamma) \coloneqq \Gamma / \T(\Gamma).
-        $$
-    \end{definition}
+    % \pause
+    % \begin{definition}
+    %     Sei $\Gamma \leq E(n)$. Dann definieren wir die \emph{Punktgruppe} von $\Gamma$ als die Faktorgruppe
+    %     $$
+    %         \P(\Gamma) \coloneqq \Gamma / \T(\Gamma).
+    %     $$
+    % \end{definition}
 \end{frame}
 
-\begin{frame}
-    \begin{proposition}
-        Sei $\Gamma \leq E(n)$. Die Menge 
-        $$
-            \L(\Gamma) \coloneqq \{ \phi_t \mid \phi \in \T(\Gamma) \}
-        $$
-        enthält $n$ linear unabhängige Vektoren. 
-        % Diese bilden ein Gitter der Dimension $n$ und spannen sogenannte \emph{Translationszellen} auf.
-    \end{proposition}
-\end{frame}
+
 
 % \begin{frame}
 %     \centering
@@ -350,22 +364,17 @@ style=numeric,
 
 \begin{frame}
     \centering
-    \includegraphics[width=0.8\textwidth]{images/dirichlet-example.png}
+    \includegraphics[width=\textwidth]{images/p2-hex-dirichlet.png}
 \end{frame}
 
 \begin{frame}
     \begin{theorem}[Dirichlet]
         Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe und $u \in \R^n$ in allgemeiner Lage. Dann ist die \emph{Dirichletzelle} 
         $$
-            D(u, u^\Gamma) \coloneqq \bigcap_{w \in u^\Gamma, w \neq u} \left\{ w \in \R^n \mid d(u,w) \leq d(v, w) \right\}.
+            D(u, u^\Gamma) \coloneqq \bigcap_{v \in u^\Gamma, v \neq u} \left\{ w \in \R^n \mid d(u,w) \leq d(v, w) \right\}.
         $$ 
         ein Fundamentalbereich von $\Gamma$.
     \end{theorem}
-\end{frame}
-
-\begin{frame}
-    \centering
-    \includegraphics[width=\textwidth]{images/p2-hex-dirichlet.png}
 \end{frame}
 
 \section{Wortlänge}
@@ -414,17 +423,25 @@ style=numeric,
 \begin{frame}
     \begin{theorem}
         Sei $\Gamma \leq E(n)$ kristallographische Gruppe und $u \in \R^n$. Dann existiert ein $A \in \N$ sodass die Dirichletzelle $D(u, u^\Gamma)$ berechnet werden kann, als Schnitt der Halbräume $H^+(u, u^\gamma)$ für $\gamma \in \Gamma$ Wörter der Länge maximal $A+1$.  
-    \end{theorem} \pause
-    Ist von uns bewiesen und haben noch keine entsprechende bisherige Veröffentlichung dazu gefunden.\\
-    \pause
-    Damit haben wir einen Zugang, um Fundamentalbereiche in endlichen Schritten (algorithmisch) zu bestimmen. Leider ist $A$ im Allgemeinen nicht einfach bestimmbar.
+    \end{theorem} 
+\end{frame}
+
+\begin{frame}
+    \begin{proposition}
+        Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe. Die Menge 
+        $$
+            \L(\Gamma) \coloneqq \{ \phi_t \mid \phi \in \T(\Gamma) \}
+        $$
+        enthält $n$ linear unabhängige Vektoren. 
+        % Diese bilden ein Gitter der Dimension $n$ und spannen sogenannte \emph{Translationszellen} auf.
+    \end{proposition}
 \end{frame}
 
 \begin{frame}
     \begin{theorem}
         Sei $\Gamma \leq E(n)$ eine kristallographische Gruppe mit Fundamentalbereich $F$ und Translationszelle $C$. Dann gilt
         $$
-            vol(F) = \frac{vol(C)}{|\P(\Gamma)|}.
+            vol(F) = \frac{vol(C)}{|\Gamma / \T(\Gamma)|}.
         $$
     \end{theorem}
 \end{frame}
@@ -533,17 +550,17 @@ style=numeric,
     \includegraphics[width=0.33\textwidth]{images/146/def-146-c.png}
 \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/146/interlocking-146-a.png}
-    \includegraphics[width=0.4\textwidth]{images/146/interlocking-146-b.png}
-\end{frame}
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=0.4\textwidth]{images/146/interlocking-146-a.png}
+%     \includegraphics[width=0.4\textwidth]{images/146/interlocking-146-b.png}
+% \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=0.48\textwidth]{images/146/interlocking-square-146-top.png}
-    \includegraphics[width=0.48\textwidth]{images/146/interlocking-square-146-bottom.png}
-\end{frame}
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=0.48\textwidth]{images/146/interlocking-square-146-top.png}
+%     \includegraphics[width=0.48\textwidth]{images/146/interlocking-square-146-bottom.png}
+% \end{frame}
 
 \begin{frame}
     \centering
@@ -570,16 +587,16 @@ style=numeric,
     \includegraphics[width=0.3\textwidth]{images/195/def-fund-dom-195-c.png}
 \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=0.48\textwidth]{images/195/def-trans-cell-195-a.png}
-    \includegraphics[width=0.48\textwidth]{images/195/def-trans-cell-195-b.png}
-\end{frame}
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=0.48\textwidth]{images/195/def-trans-cell-195-a.png}
+%     \includegraphics[width=0.48\textwidth]{images/195/def-trans-cell-195-b.png}
+% \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/195/row-cont-195.png}
-\end{frame}
+% \begin{frame}
+%     \centering
+%     \includegraphics[width=0.5\textwidth]{images/195/row-cont-195.png}
+% \end{frame}
 
 \begin{frame}
     \centering
